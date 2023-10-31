@@ -3,7 +3,7 @@
     <Header @changeTab="changeTab" />
     <main class="main">
       <KeepAlive>
-        <component :is="activeComponent" />
+        <component :is="activeComponent"/>
       </KeepAlive>
     </main>
   </div>
@@ -30,6 +30,9 @@ export default {
     changeTab(str) {
       this.activeComponent = str;
     }
+  },
+  mounted() {
+    this.$mitt.on('showUserPosts', (params) => this.changeTab(params.name));
   }
 }
 </script>
